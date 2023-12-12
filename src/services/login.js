@@ -3,10 +3,12 @@ import api from "../plugins/api";
 class LoginApi {
   async login(user) {
     try {
-      const response = await api.post("/token/", user);
-      return Promise.resolve(response);
+      const { data } = await api.post("/token/", user);
+      console.log(data);
+      return data; // Retorna diretamente os dados da resposta
     } catch (error) {
-      return Promise.error(error);
+      console.error("Erro ao fazer login:", error);
+      throw error;
     }
   }
 }

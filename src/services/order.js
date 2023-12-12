@@ -1,22 +1,28 @@
+// order.js
 import api from "../plugins/api";
 
-class MovieService {
-  async getAllMovies() {
-    const response = await api.get("/movies/");
-    return response.data;
+class OrderService {
+  async createOrder(data) {
+    try {
+      const response = await api.post("/servico/", data);
+      const orderData = response.data;
+      return orderData;
+    } catch (error) {
+      console.error("Erro ao criar nova ordem de serviço:", error);
+      throw error;
+    }
   }
 
-  // async getMoviesByGenreId(genreId) {
-
-  async saveMovie(movie) {
-    let response;
-    if (movie.id) {
-      response = await api.put(`/movies/${movie.id}/`, movie);
-    } else {
-      response = await api.post("/movies/", movie);
+  async getAllOrders() {
+    try {
+      const response = await api.get("/servico/");
+      const orderData = response.data;
+      return orderData;
+    } catch (error) {
+      console.error("Erro ao receber as ordens serviço:", error);
+      throw error;
     }
-    return response.data;
   }
 }
 
-export default new MovieService();
+export default new OrderService();
