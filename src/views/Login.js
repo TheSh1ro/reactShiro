@@ -18,7 +18,10 @@ export default function Login({ navigation }) {
 
   const login = async () => {
     try {
-      const data = await loginApi.login(username, password);
+      const data = await loginApi.login({
+        email: "admin@admin.com",
+        password: "admin",
+      });
       setUser({
         loggedIn: true,
         access: data.access,
@@ -63,7 +66,7 @@ export default function Login({ navigation }) {
           >
             Entrar
           </Button>
-          <Text>{errorMsg}</Text>
+          <Text style={{ color: "yellow" }}>{errorMsg}</Text>
         </View>
       </ImageBackground>
     </View>

@@ -1,13 +1,10 @@
 import api from "../plugins/api";
 
 class LoginApi {
-  async login(username, password) {
+  async login(user) {
     try {
-      const { data } = await api.post("/token/", {
-        username,
-        password,
-      });
-      return Promise.resolve(data);
+      const response = await api.post("/token/", user);
+      return Promise.resolve(response);
     } catch (error) {
       return Promise.error(error);
     }
