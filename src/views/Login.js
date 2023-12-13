@@ -10,8 +10,8 @@ import { userState } from "../recoil/atoms/auth";
 const imageBackground = require("../../assets/caitlyn.jpg");
 
 export default function Login({ navigation }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("admin@admin.com");
+  const [password, setPassword] = useState("admin");
   const [errorMsg, setErrorMsg] = useState(null);
 
   const setUser = useSetRecoilState(userState);
@@ -19,8 +19,8 @@ export default function Login({ navigation }) {
   const login = async () => {
     try {
       const data = await loginApi.login({
-        email: "admin@admin.com",
-        password: "admin",
+        email: username,
+        password: password,
       });
       setUser({
         loggedIn: true,
@@ -50,6 +50,7 @@ export default function Login({ navigation }) {
             style={styles.input}
             value={username}
             onChangeText={setUsername}
+            textColor="black"
           />
           <TextInput
             label="Password"
@@ -58,6 +59,7 @@ export default function Login({ navigation }) {
             style={styles.input}
             value={password}
             onChangeText={setPassword}
+            textColor="black"
           />
           <Button
             style={styles.button}
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    paddingHorizontal: 30,
+    paddingHorizontal: 40,
     gap: 10,
   },
   title: {
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "100%",
-    backgroundColor: "rgb(65,65,180)",
+    backgroundColor: "rgb(105,65,160)",
     borderRadius: 0,
   },
 });
