@@ -16,6 +16,7 @@ import { userState } from "./src/recoil/atoms/auth";
 
 import Home from "./src/views/Home";
 import Login from "./src/views/Login";
+import OrderDetails from "./src/views/OrderDetails";
 
 const Drawer = createDrawerNavigator();
 
@@ -72,6 +73,17 @@ function MainDrawer() {
                 backgroundColor: "rgb(45,45,60)", // Cor de fundo do cabeçalho
               },
               headerTintColor: "white", // Cor do texto do cabeçalho
+            }}
+          />
+          <Drawer.Screen
+            name="OrderDetails"
+            component={OrderDetails}
+            options={{
+              title: "Detalhes do serviço",
+              headerStyle: {
+                backgroundColor: "rgb(45,45,60)",
+              },
+              headerTintColor: "white",
             }}
           />
           {!currentUserState.loggedIn && (

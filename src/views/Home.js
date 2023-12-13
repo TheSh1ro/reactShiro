@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
 
     justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.6)",
     padding: 16,
   },
 
@@ -167,11 +166,13 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 16,
+    fontSize: 15,
+    fontWeight: "bold",
     color: "orange",
   },
   status: {
     color: "white",
+    fontSize: 15,
   },
   body: {
     flexDirection: "row",
@@ -187,6 +188,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
+    fontSize: 15,
   },
   noOrdersView: {
     flex: 1,
@@ -203,11 +205,15 @@ const styles = StyleSheet.create({
   retryButton: {
     fontSize: 16,
     color: "white",
-    backgroundColor: "black",
+    backgroundColor: "rgb(35,35,60)",
+    borderColor: "white",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderRadius: 8,
+    padding: 13,
+    marginTop: 16,
     width: "60%",
     alignSelf: "center",
-    padding: 12,
     textAlign: "center",
-    marginTop: 16,
   },
 });
