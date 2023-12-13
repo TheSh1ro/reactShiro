@@ -2,6 +2,7 @@ import * as React from "react";
 import "react-native-gesture-handler";
 import { View, StyleSheet } from "react-native";
 import { PaperProvider, Text } from "react-native-paper";
+import { StatusBar } from "react-native";
 import { RecoilRoot, useSetRecoilState, useRecoilValue } from "recoil";
 import RecoilNexus from "recoil-nexus";
 // import { getRecoil, setRecoil } from "recoil-nexus";
@@ -25,7 +26,6 @@ function Logout({ navigation }) {
     setUser({ loggedIn: false, access: null, refresh: null });
     await SecureStore.deleteItemAsync("access");
     await SecureStore.deleteItemAsync("refresh");
-    navigation.navigate("Home");
   };
 
   React.useEffect(() => {
@@ -58,13 +58,37 @@ function MainDrawer() {
   return (
     <PaperProvider>
       <NavigationContainer>
+        <StatusBar
+          barStyle={"light-content"}
+          backgroundColor={"rgb(45,45,60)"}
+        />
         <Drawer.Navigator>
-          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen
+            name="Home"
+            component={Home}
+            options={{
+              title: "Serviços",
+              headerStyle: {
+                backgroundColor: "rgb(45,45,60)", // Cor de fundo do cabeçalho
+              },
+              headerTintColor: "white", // Cor do texto do cabeçalho
+            }}
+          />
           {!currentUserState.loggedIn && (
-            <Drawer.Screen name="Login" component={Login} />
+            <Drawer.Screen
+              name="Login"
+              component={Login}
+              options={{
+                title: "Fazer login",
+                headerStyle: {
+                  backgroundColor: "rgb(45,45,60)", // Cor de fundo do cabeçalho
+                },
+                headerTintColor: "white", // Cor do texto do cabeçalho
+              }}
+            />
           )}
           {currentUserState.loggedIn && (
-            <Drawer.Screen name="Logout" component={Logout} />
+            <Drawer.Screen name="Desconectar" component={Logout} />
           )}
         </Drawer.Navigator>
       </NavigationContainer>
